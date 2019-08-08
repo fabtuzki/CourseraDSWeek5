@@ -4,7 +4,7 @@ import scala.util.control.Breaks
 class TreeTraversal {
 
 
-  def inOrderTraversal(originalTree: Array[(Int, Int, Int)]): Array[Int] = {
+  def inOrderTraversal(originalTree: Array[(Int, Int, Int, Int)]): Array[Int] = {
     val result = new ArrayBuffer[Int]
     val stackNode = new Stack[(Int, Int, Int, Int)]
     var currentIndex = 0
@@ -21,6 +21,7 @@ class TreeTraversal {
 
       //print key at current position (no more left child)
       result.append(stackNode.top._2)
+      originalTree.update(stackNode.top._1, (stackNode.top._2, stackNode.top._3, stackNode.top._4, 1))
       //      println("result list after print key 1: " + result.mkString(" "))
 
       //check if can traverse right :
@@ -30,8 +31,9 @@ class TreeTraversal {
           stackNode.pop()
           if (stackNode.nonEmpty) {
             stackNode.update(0, (stackNode.top._1, stackNode.top._2, -1, stackNode.top._4))
-            if (result.length <= 1 || !result.contains(stackNode.top._2)) {
+            if (originalTree(stackNode.top._1)._4 == 0) {
               result.append(stackNode.top._2)
+              originalTree.update(stackNode.top._1, (stackNode.top._2, stackNode.top._3, stackNode.top._4, 1))
             }
           } else {
             loopControl.break()
@@ -39,7 +41,7 @@ class TreeTraversal {
         }
 
       }
-      //      println("result list after print key 2: " + result.mkString(" "))
+//            println("result list after print key 2: " + result.mkString(" "))
       if (stackNode.nonEmpty) {
         currentIndex = stackNode.top._4
         stackNode.update(0, (stackNode.top._1, stackNode.top._2, stackNode.top._3, -1))
@@ -77,6 +79,7 @@ class TreeTraversal {
             stackNode.update(0, (stackNode.top._1, stackNode.top._2, -1, stackNode.top._4))
             if (originalTree(stackNode.top._1)._4 == 0) {
               result.append(stackNode.top._2)
+              originalTree.update(stackNode.top._1, (stackNode.top._2, stackNode.top._3, stackNode.top._4, 1))
             }
           } else {
             loopControl.break()
@@ -84,7 +87,7 @@ class TreeTraversal {
         }
 
       }
-      println("result list after print key 2: " + result.mkString(" "))
+//      println("result list after print key 2: " + result.mkString(" "))
       if (stackNode.nonEmpty) {
         currentIndex = stackNode.top._4
         stackNode.update(0, (stackNode.top._1, stackNode.top._2, stackNode.top._3, -1))
