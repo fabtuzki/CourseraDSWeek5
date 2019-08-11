@@ -1,3 +1,7 @@
+import scala.collection.mutable.{ArrayBuffer, Stack}
+import scala.util.control.Breaks
+
+
 object IsBST {
   def main(args: Array[String]): Unit = {
 
@@ -27,3 +31,4 @@ object IsBST {
 class Node(var left: Node, var right: Node, var data: Int) {
 
 }
+  
