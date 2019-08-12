@@ -28,7 +28,7 @@ object IsBST {
 
 }
 
-class Node(var left: Node, var right: Node, var data: Int) {
+class Node(var left: Node, var right: Node, var data: Int, var parent : Node ) {
 
 }
   
