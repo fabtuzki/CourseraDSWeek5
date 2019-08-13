@@ -199,14 +199,19 @@ class SplayTree {
   }
 
   def STDelete(key: Int, root: Node): Unit = {
-    splay(Next(root))
-    splay(root)
-    val left = root.left
-    val right = root.right
+    val nodeN = Find(key, getRoot(root))
+    val nodeNNext = Next(nodeN)
+    splay(nodeNNext)
+    splay(nodeN) 
+
+    val left = nodeN.left
+    val right = nodeN.right
     right.left = left
     left.parent = right
-    //right becomes root
     right.parent = null
+    nodeN.left = null
+    nodeN.right = null
+
   }
 
   def STSplit(root: Node, key: Int): (Node, Node) = {

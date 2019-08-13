@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b6a656e-eeda-434d-a070-19be70041e17" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/SplayTreeExecute.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IsBST.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/IsBST.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SplayTree.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/SplayTree.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SplayTreeExecute.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/SplayTreeExecute.scala" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,25 +50,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SplayTreeExecute.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="184">
+              <caret line="21" column="62" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SplayTree.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+            <state relative-caret-position="-145">
+              <caret line="204" column="17" lean-forward="true" selection-start-line="204" selection-start-column="17" selection-end-line="204" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>recursiveInOrderTraversal</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,8 +82,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/IsBST.scala" />
-        <option value="$PROJECT_DIR$/src/SplayTree.scala" />
         <option value="$PROJECT_DIR$/src/SplayTreeExecute.scala" />
+        <option value="$PROJECT_DIR$/src/SplayTree.scala" />
       </list>
     </option>
   </component>
@@ -172,7 +175,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14935064" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40584415" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -247,17 +250,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SplayTree.scala">
+    <entry file="file://$PROJECT_DIR$/src/SplayTreeExecute.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+        <state relative-caret-position="184">
+          <caret line="21" column="62" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SplayTreeExecute.scala">
+    <entry file="file://$PROJECT_DIR$/src/SplayTree.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="-145">
+          <caret line="204" column="17" lean-forward="true" selection-start-line="204" selection-start-column="17" selection-end-line="204" selection-end-column="17" />
         </state>
       </provider>
     </entry>
