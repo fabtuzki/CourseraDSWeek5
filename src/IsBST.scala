@@ -5,7 +5,7 @@ import scala.util.control.Breaks
 object IsBST {
   def main(args: Array[String]): Unit = {
 
-    val root = new Node(null, null, 100)
+    val root = new Node(null, null, 100, null)
   }
 
   def isBST(root: Node): Boolean = {
@@ -28,7 +28,10 @@ object IsBST {
 
 }
 
-class Node(var left: Node, var right: Node, var data: Int, var parent : Node ) {
+class Node(var left: Node,
+           var right: Node,
+           var data: Int,
+           var parent: Node) {
 
 }
   
