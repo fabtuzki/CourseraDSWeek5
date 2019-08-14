@@ -1,4 +1,5 @@
-class SplayTree {
+class SplayTree(var rootData: Int) {
+  var root = new Node(null, null, rootData, null)
 
   def getRoot(nodeN: Node): Node = {
     if (nodeN.parent == null) {
@@ -21,8 +22,14 @@ class SplayTree {
     nodeP.parent = nodeN
     nodeQ.parent = nodeP
     nodeQ.left = nodeP.right
+    if (nodeQ.left != null) {
+      nodeQ.left.parent = nodeQ
+    }
     nodeP.right = nodeQ
     nodeP.left = nodeN.right
+    if (nodeP.left != null) {
+      nodeP.left.parent = nodeP
+    }
     nodeN.right = nodeP
   }
 
@@ -39,8 +46,14 @@ class SplayTree {
     nodeP.parent = nodeN
     nodeQ.parent = nodeP
     nodeQ.right = nodeP.left
+    if (nodeQ.right != null) {
+      nodeQ.right.parent = nodeQ
+    }
     nodeP.left = nodeQ
     nodeP.right = nodeN.left
+    if (nodeP.right != null) {
+      nodeP.right.parent = nodeP
+    }
     nodeN.left = nodeP
   }
 
@@ -59,7 +72,15 @@ class SplayTree {
     nodeQ.parent = nodeN
     nodeP.parent = nodeN
     nodeP.right = nodeN.left
+    //update parent for  child node of node N
+    if (nodeP.right != null) {
+      nodeP.right.parent = nodeP
+    }
     nodeQ.left = nodeN.right
+    //update parent for  child node of node N
+    if (nodeQ.left != null) {
+      nodeQ.left.parent = nodeQ
+    }
     nodeN.left = nodeP
     nodeN.right = nodeQ
   }
@@ -78,7 +99,13 @@ class SplayTree {
     nodeQ.parent = nodeN
     nodeP.parent = nodeN
     nodeP.left = nodeN.right
+    if (nodeP.left != null) {
+      nodeP.left.parent = nodeP
+    }
     nodeQ.right = nodeN.left
+    if (nodeQ.right != null) {
+      nodeQ.right.parent = nodeQ
+    }
     nodeN.left = nodeQ
     nodeN.right = nodeP
     nodeP.right = nodeP.right
@@ -89,6 +116,9 @@ class SplayTree {
     val nodeP = nodeN.parent
     nodeP.parent = nodeN
     nodeP.right = nodeN.left
+    if (nodeP.right != null) {
+      nodeP.right.parent = nodeP
+    }
     nodeN.left = nodeP
     nodeN.parent = null
   }
@@ -97,6 +127,9 @@ class SplayTree {
     val nodeP = nodeN.parent
     nodeP.parent = nodeN
     nodeP.left = nodeN.right
+    if (nodeP.left != null) {
+      nodeP.left.parent = nodeP
+    }
     nodeN.right = nodeP
     nodeN.parent = null
 
@@ -136,28 +169,30 @@ class SplayTree {
         zig(nodeN)
       }
     }
+
+    root = getRoot(nodeN)
   }
 
 
-  def Find(key: Int, root: Node): Node = {
-    if (root.data == key) {
-      root
+  def Find(key: Int, nodeInput: Node): Node = {
+    if (nodeInput.data == key) {
+      nodeInput
     }
-    else if (root.data > key) {
-      if (root.left != null) {
-        Find(key, root.left)
-      } else root
+    else if (nodeInput.data > key) {
+      if (nodeInput.left != null) {
+        Find(key, nodeInput.left)
+      } else nodeInput
     }
     else {
-      if (root.right != null) {
-        Find(key, root.right)
-      } else root
+      if (nodeInput.right != null) {
+        Find(key, nodeInput.right)
+      } else nodeInput
     }
 
   }
 
-  def Insert(key: Int, root: Node): Unit = {
-    val nearestNode = Find(key, root)
+  def Insert(key: Int, nodeInput: Node): Unit = {
+    val nearestNode = Find(key, nodeInput)
     if (nearestNode.data < key) {
       nearestNode.right = new Node(null, null, key, nearestNode)
     } else if (nearestNode.data > key) {
@@ -186,51 +221,66 @@ class SplayTree {
   }
 
 
-  def STFind(key: Int, root: Node): Node = {
-    val nodeN = Find(key, root)
+  def STFind(key: Int, nodeInput: Node): Node = {
+    val nodeN = Find(key, nodeInput)
     splay(nodeN)
     nodeN
   }
 
-  def STInsert(key: Int, root: Node): Node = {
-    Insert(key, root)
+  def STInsert(key: Int, nodeInput: Node): Node = {
+    Insert(key, nodeInput)
     println("Inserted key " + key)
-    STFind(key, root)
+    STFind(key, nodeInput)
   }
 
-  def STDelete(key: Int, root: Node): Unit = {
-    val nodeN = Find(key, getRoot(root))
+  def STDelete(key: Int): Unit = {
+    val nodeN = Find(key, root)
     val nodeNNext = Next(nodeN)
     splay(nodeNNext)
-    splay(nodeN) 
+    splay(nodeN)
+
 
     val left = nodeN.left
     val right = nodeN.right
+    val parent = nodeN.parent
+    if (parent.left == nodeN) {
+      parent.left = right
+    } else {
+      parent.right = right
+    }
+
     right.left = left
     left.parent = right
-    right.parent = null
+
+    right.parent = parent
     nodeN.left = null
     nodeN.right = null
+    nodeN.parent = null
+
 
   }
 
-  def STSplit(root: Node, key: Int): (Node, Node) = {
+  def STSplit(key: Int): (Node, Node) = {
     val nodeN = Find(key, root)
-    splay(nodeN)
-    if (nodeN.data > key) {
-      cutLeft(root)
-    } else if (nodeN.data < key) {
-      cutRight(root)
+    while (nodeN != root) {
+      splay(nodeN)
+    }
+    if (nodeN.data >= key) {
+      cutLeft(nodeN)
     } else {
-      (nodeN.left, nodeN.right)
+      cutRight(nodeN)
     }
   }
 
   def STMerge(root1: Node, root2: Node) = {
-    val nodeN = Find(10000000, root1)
-    splay(nodeN)
-    nodeN.right = root2
-    root2.parent = nodeN
+    var nodeN1 = Find(1000000000, root1)
+    root = root1
+    while (nodeN1 != root) {
+      splay(nodeN1)
+    }
+    nodeN1.right = root2
+    root2.parent = nodeN1
+    root = nodeN1
   }
 
   def cutLeft(node: Node): (Node, Node) = {
@@ -256,6 +306,15 @@ class SplayTree {
     println(node.data)
     recursiveInOrderTraversal(node.right)
 
+  }
+
+  def recursivePreOrderTraversal(node: Node): Unit = {
+    if (node == null) {
+      return
+    }
+    println(node.data)
+    recursivePreOrderTraversal(node.left)
+    recursivePreOrderTraversal(node.right)
   }
 
 
