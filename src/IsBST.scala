@@ -1,11 +1,11 @@
-import scala.collection.mutable.{ArrayBuffer, Stack}
-import scala.util.control.Breaks
-
 
 object IsBST {
   def main(args: Array[String]): Unit = {
 
     val root = new Node(null, null, 100, null)
+
+
+
   }
 
   def isBST(root: Node): Boolean = {
